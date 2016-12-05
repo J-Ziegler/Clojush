@@ -26,8 +26,36 @@
     :else                                             0))
 
 (defn make-start-state
-  [inputs]
-  (reduce (fn [state input]
-            (push-item input :input state))
-          (make-push-state)
-          inputs))
+  [input]
+  (push-item input :input (make-push-state)))
+
+(defn actual-output
+  [program inputs]
+  (let [start-state (make-start-state inputs)
+        end-state (run-push program start-state)
+        top-int (top-item :integer end-state)]
+    top-int))
+
+(defn abs [n]
+  (if (< n 0)
+    (- n)
+    n))
+
+(defn all-errors
+  [program]
+  (doall
+    (for [inputs input-set]
+      (let [expected (expected-output inputs)
+            actual (actual-output program inputs)]
+        (if (= actual :no-stack-item)
+          1000
+          (abs (- expected actual)))))))
+
+(def atom-generators
+  (concat (registered-for-stacks [:integer :boolean :exec])
+          (list (fn [] (lrand-int 100)) 'in1 3 5)))
+
+(def argmap
+  {:error-function all-errors
+   :atom-generators atom-generators
+   })

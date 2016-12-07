@@ -38,7 +38,7 @@
           :population-size 1000
           ;; Number of individuals in the population.
 
-          :max-generations 1001
+          :max-generations 250
           ;; The maximum number of generations to run GP.
 
           :max-point-evaluations 10e100
@@ -208,7 +208,7 @@
           :track-instruction-maps false
           ;; If true, each Plush instruction map will have a UUID attached to it. If the
           ;; gene has a "parent gene", it will also have the UUID of its parent.
- 
+
           ;;----------------------------------------
           ;; Arguments related to parent selection
           ;;----------------------------------------

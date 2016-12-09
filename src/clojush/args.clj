@@ -38,7 +38,7 @@
           :population-size 1000
           ;; Number of individuals in the population.
 
-          :max-generations 250
+          :max-generations 500
           ;; The maximum number of generations to run GP.
 
           :max-point-evaluations 10e100

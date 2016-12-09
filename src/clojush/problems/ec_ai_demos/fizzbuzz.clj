@@ -58,9 +58,9 @@
 (def atom-generators
   (concat (registered-for-stacks [:integer :boolean :exec])
           (list 'in1 3 5)
-          (repeat 3 3)
-          (repeat 3 5)
-          (repeat 3 'integer_mod)))
+          (repeat 5 3)
+          (repeat 5 5)
+          (repeat 10 'integer_mod)))
 
 (def argmap
   {:error-function all-errors
